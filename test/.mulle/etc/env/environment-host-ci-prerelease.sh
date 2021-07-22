@@ -727,7 +727,7 @@ export MULLE_OBJC_INET_FOUNDATION_NODETYPE="git"
 #
 # MulleObjCInetFoundation url: ${MULLE_OBJC_INET_FOUNDATION_URL:-https://github.com/MulleWeb/MulleObjCInetFoundation/archive/${MULLE_TAG}.tar.gz}
 #
-export MULLE_OBJC_INET_FOUNDATION_URL="https://github.com/mulle-c/MulleObjCInetFoundation.git"
+export MULLE_OBJC_INET_FOUNDATION_URL="https://github.com/MulleWeb/MulleObjCInetFoundation.git"
 
 
 #
