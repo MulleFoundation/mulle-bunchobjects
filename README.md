@@ -30,7 +30,7 @@ MulleFoundation and the AppleFoundation.
 Use [mulle-sde](//github.com/mulle-sde) to add mulle-bunchobjects to your project:
 
 ``` console
-mulle-sde dependency add --c --github --marks no-header MulleFoundation mulle-bunchobjects
+mulle-sde dependency add --objc --github --marks no-header MulleFoundation mulle-bunchobjects
 ```
 
 ## Install
