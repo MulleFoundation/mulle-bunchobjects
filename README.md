@@ -6,6 +6,9 @@ Instead of allocating memory for each single object, this library allocates
 memory for a bunch of objects. The memory can be released or reused, if all
 objects of the bunch have been released.
 
+* reduces time spent in malloc
+* may waste memory
+
 As an example lets create bunches of eight objects each. Each object in the
 bunch is either 'unused', 'allocated', or 'freed'. Freed objects and unused
 objects can be used for +alloc. Once each object is 'freed', the whole bunch
@@ -23,6 +26,7 @@ You can't use bunch objects, if you need extra bytes during allocation
 
 This library builds on objc-compat, and therefore works with the
 MulleFoundation and the AppleFoundation.
+
 
 
 ## Add
