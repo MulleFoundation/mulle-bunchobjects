@@ -37,6 +37,12 @@ Use [mulle-sde](//github.com/mulle-sde) to add mulle-bunchobjects to your projec
 mulle-sde dependency add --objc --github --marks no-header MulleFoundation mulle-bunchobjects
 ```
 
+
+### You are here
+
+![Overview](overview.dot.svg)
+
+
 ## Install
 
 ### mulle-sde
