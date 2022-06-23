@@ -1,7 +1,6 @@
 cmake_minimum_required( VERSION 3.1)
 
 project( mulle-bunchobjects C)
-add_definitions( -DMULLE_BUNCHOBJECTS_EXTERN_GLOBAL=extern)
 
 #
 # Turn a "Library" into an "Executable"
