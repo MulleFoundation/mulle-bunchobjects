@@ -62,7 +62,7 @@ Install the requirements:
 
 Requirements                                               | Description
 -----------------------------------------------------------|-----------------------
-[compat-objc](//github.com/MulleFoundation/compat-objc)    | Portable Objective-C runtime
+[compat-objc](//github.com/MulleFoundation/objc-compat)    | Portable Objective-C runtime
 [mulle-thread](//github.com/mulle-concurrent/mulle-thread) | Portable locks
 [mulle-allocator](//github.com/mulle-c/mulle-allocator)    | Portable memory allocation
 
