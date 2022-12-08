@@ -15,6 +15,7 @@ endif()
 # Generated from sourcetree: 2A45651D-64C7-4417-A29B-D7AED105CFC4;AppleFoundation;no-all-load,no-build,no-cmake-inherit,no-delete,no-dependency,no-fs,no-share,no-update,only-framework,only-platform-darwin;Foundation
 # Disable with : `mulle-sourcetree mark AppleFoundation `
 # Disable for this platform: `mulle-sourcetree mark AppleFoundation no-cmake-platform-${MULLE_UNAME}`
+# Disable for a sdk: `mulle-sourcetree mark AppleFoundation no-cmake-sdk-<name>`
 #
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
    if( NOT FOUNDATION_FRAMEWORK)
@@ -40,4 +41,4 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
          message( FATAL_ERROR "FOUNDATION_FRAMEWORK was not found")
       endif()
    endif()
-endif()
+   endif()

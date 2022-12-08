@@ -54,16 +54,16 @@ static inline size_t   s_header_align1_offset( size_t alignment)
 }
 
 
+////
+//// calc size of Align1
+////
+//static inline size_t   s_align1( size_t alignment)
+//{
+//   size_t   size;
 //
-// calc size of Align1
-//
-static inline size_t   s_align1( size_t alignment)
-{
-   size_t   size;
-
-   size = s_header_align1_offset( alignment) - (s_header + s_offset);
-   return( size);
-}
+//   size = s_header_align1_offset( alignment) - (s_header + s_offset);
+//   return( size);
+//}
 
 
 //
