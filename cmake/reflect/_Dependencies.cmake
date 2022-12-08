@@ -15,6 +15,7 @@ endif()
 # Generated from sourcetree: 8513CFB7-F1C6-4005-9D97-ECE6F8CA3AFD;objc-compat;no-all-load,no-import,no-link;
 # Disable with : `mulle-sourcetree mark objc-compat no-header`
 # Disable for this platform: `mulle-sourcetree mark objc-compat no-cmake-platform-${MULLE_UNAME}`
+# Disable for a sdk: `mulle-sourcetree mark objc-compat no-cmake-sdk-<name>`
 #
 if( NOT OBJC_COMPAT_HEADER)
    find_file( OBJC_COMPAT_HEADER NAMES objc-compat.h objc-compat/objc-compat.h)
@@ -83,6 +84,7 @@ endif()
 # Generated from sourcetree: 413A5B74-33B3-4AE9-A460-0442E9B2524B;Foundation;no-platform-darwin,no-require-os-darwin,no-singlephase;
 # Disable with : `mulle-sourcetree mark Foundation no-link`
 # Disable for this platform: `mulle-sourcetree mark Foundation no-cmake-platform-${MULLE_UNAME}`
+# Disable for a sdk: `mulle-sourcetree mark Foundation no-cmake-sdk-<name>`
 #
 if( NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
    if( NOT FOUNDATION_LIBRARY)
@@ -158,13 +160,14 @@ if( NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
          message( FATAL_ERROR "FOUNDATION_LIBRARY was not found")
       endif()
    endif()
-endif()
+   endif()
 
 
 #
 # Generated from sourcetree: 924851DE-97BF-4C8D-BE5A-B2A2A3141772;mulle-thread;no-all-load,no-cmake-inherit,no-cmake-searchpath,no-import,no-singlephase;
 # Disable with : `mulle-sourcetree mark mulle-thread no-link`
 # Disable for this platform: `mulle-sourcetree mark mulle-thread no-cmake-platform-${MULLE_UNAME}`
+# Disable for a sdk: `mulle-sourcetree mark mulle-thread no-cmake-sdk-<name>`
 #
 if( NOT MULLE_THREAD_LIBRARY)
    find_library( MULLE_THREAD_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-thread${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-thread${CMAKE_STATIC_LIBRARY_SUFFIX} mulle-thread NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
@@ -195,6 +198,7 @@ endif()
 # Generated from sourcetree: C64F8663-2DC3-4593-9668-F00A23C4069B;mulle-allocator;no-all-load,no-cmake-inherit,no-cmake-searchpath,no-import,no-singlephase;
 # Disable with : `mulle-sourcetree mark mulle-allocator no-link`
 # Disable for this platform: `mulle-sourcetree mark mulle-allocator no-cmake-platform-${MULLE_UNAME}`
+# Disable for a sdk: `mulle-sourcetree mark mulle-allocator no-cmake-sdk-<name>`
 #
 if( NOT MULLE_ALLOCATOR_LIBRARY)
    find_library( MULLE_ALLOCATOR_LIBRARY NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-allocator${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX} ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-allocator${CMAKE_STATIC_LIBRARY_SUFFIX} mulle-allocator NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH)
