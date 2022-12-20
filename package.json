@@ -8,7 +8,7 @@
    "license" : "UNLICENSED",
    "repository" : {
       "type" : "git",
-      "url" : "MulleFoundation/mulle-bunchobjects"
+      "url" : "github:MulleFoundation/mulle-bunchobjects"
    },
    "dependencies" : {
       "Foundation" : "git://github.com/MulleFoundation/Foundation",
@@ -49,7 +49,7 @@
       "MulleObjCUnicodeFoundation" : "git://github.com/MulleFoundation/MulleObjCUnicodeFoundation",
       "MulleObjCArchiverFoundation" : "git://github.com/MulleFoundation/MulleObjCArchiverFoundation",
       "MulleObjCExpatFoundation" : "git://github.com/MulleFoundation/MulleObjCExpatFoundation",
-      "libexpat" : "git://github.com/mulle-nat/libexpat",
+      "libexpat" : "git://github.com/libexpat/libexpat",
       "MulleBase64" : "git://github.com/MulleWeb/MulleBase64",
       "MulleObjCInetOSFoundation" : "git://github.com/MulleFoundation/MulleObjCInetOSFoundation",
       "MulleObjCInetFoundation" : "git://github.com/MulleWeb/MulleObjCInetFoundation",
