@@ -1,0 +1,31 @@
+{
+   project =
+   {
+      description="👨‍👩‍👧‍👦 mulle-bunchobjects efficently allocate instances";
+      domain="github";
+      name="mulle-bunchobjects";
+      user="MulleFoundation";
+      repo="mulle-bunchobjects";
+      homepage="https://github.com/MulleFoundation/mulle-bunchobjects";
+      license="BSD-3-Clause"
+   };
+   dependencies =
+   (
+      {
+         description="🛸 MulleFoundationBase does something";
+         domain="github";
+         name="MulleFoundationBase";
+         repo="MulleFoundationBase";
+         url="https://github.com/MulleFoundation/MulleFoundationBase";
+         user="MulleFoundation";
+      },
+      {
+         description="🔗 Glue for Objective-C code to support different Foundations";
+         domain="github";
+         name="objc-compat";
+         repo="objc-compat";
+         url="https://github.com/MulleFoundation/objc-compat";
+         user="MulleFoundation";
+      }
+   )
+}

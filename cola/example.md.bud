@@ -1,0 +1,20 @@
+## Example
+
+As an example lets create bunches of eight objects each. Each object in the
+bunch is either 'unused', 'allocated', or 'freed'. Freed objects and unused
+objects can be used for +alloc. Once each object is 'freed', the whole bunch
+memory can be freed.
+
+``` 
+Bunch of 8 objects:
+     .---.---.---.---.---.---.---.---.
+     | F | F | A | A | A | A | A | U |
+     '---'---'---'---'---'---'---'---'
+```
+
+You can't use bunch objects, if you need extra bytes during allocation
+(see [NSAllocateObject](https://developer.apple.com/documentation/foundation/1587930-nsallocateobject?language=objc)).
+
+This library builds on objc-compat, and therefore works with the
+MulleFoundation and the AppleFoundation.
+
