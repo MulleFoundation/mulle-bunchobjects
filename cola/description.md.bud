@@ -1,0 +1,7 @@
+Instead of allocating memory for each single object, this library allocates
+memory for a bunch of objects. The memory can be released or reused, if all
+objects of the bunch have been released.
+
+* reduces time spent in malloc
+* may waste memory
+
