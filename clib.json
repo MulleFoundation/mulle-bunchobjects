@@ -1,6 +1,6 @@
 {
    "name" : "mulle-bunchobjects",
-   "version" : "0.20.2",
+   "version" : "0.20.3",
    "description" : "mulle-bunchobjects efficently allocate instances",
    "keywords" : [],
    "license" : "BSD-3-Clause",
@@ -10,9 +10,7 @@
       "src/mulle-bunchobjects.m"
    ],
    "dependencies" : {
-      "MulleFoundation/Foundation": "*",
-      "MulleFoundation/objc-compat": "*",
-      "mulle-concurrent/mulle-thread": "*",
-      "mulle-c/mulle-allocator": "*"
+      "MulleFoundation/MulleFoundationBase": "*",
+      "MulleFoundation/objc-compat": "*"
    }
 }
