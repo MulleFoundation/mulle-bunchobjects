@@ -1,11 +1,10 @@
-#import <Foundation/Foundation.h>
-
 #define USE_BUNCH_OBJECTS  1
+#import <MulleObjC/MulleObjC.h>
 #include <mulle-bunchobjects/mulle-bunchobjects.h>
 
 
 
-@interface TestBunchData : NSData
+@interface TestBunchData : NSObject
 {
    unsigned char    bytes_[ 12];
 }
@@ -49,28 +48,51 @@ static struct mulle_bunchinfo   bunchinfo;
 
 int  main( int argc, char *argv[])
 {
-   NSMutableArray    *array;
-   NSUInteger        i, n;
-   id                obj;
+   NSUInteger   i, j, n, count;
+   id           array[ 100];
 
-   array = [NSMutableArray array];
+   count = 0;
    for( i = 0; i < 100; i++)
    {
-      obj = [[TestBunchData new] autorelease];
-      [array addObject:obj];
+      array[ i] = [TestBunchData new];
+      count++;
    }
 
-   while( (n = [array count]) > 50)
-      [array removeObjectAtIndex:rand() % n];
+   assert( count == 100);
 
-   for( i = 0; i < 50; i++)
+   while( count > 50)
    {
-      obj = [[TestBunchData new] autorelease];
-      [array addObject:obj];
+      i = rand() % 100;
+      if( array[ i])
+      {
+         [array[ i] release];
+         array[ i] = nil;
+         --count;
+      }
    }
 
-   while( (n = [array count]))
-      [array removeObjectAtIndex:rand() % n];
+   assert( count == 50);
+
+   for( j = i = 0; i < 50; i++)
+   {
+      while( array[ j])
+         ++j;
+      array[ j] = [TestBunchData new];
+      ++count;
+   }
+
+   assert( count == 100);
+
+   while( count)
+   {
+      i = rand() % 100;
+      if( array[ i])
+      {
+         [array[ i] release];
+         array[ i] = nil;
+         --count;
+      }
+   }
 
    return( 0);
 }
