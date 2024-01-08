@@ -10,9 +10,10 @@ objects of the bunch have been released.
 * may waste memory
 
 
+
 | Release Version                                       | Release Notes
 |-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag//mulle-bunchobjects.svg?branch=release) [![Build Status](https://github.com//mulle-bunchobjects/workflows/CI/badge.svg?branch=release)](//github.com//mulle-bunchobjects/actions)| [RELEASENOTES](RELEASENOTES.md) |
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/mulle-bunchobjects.svg?branch=release) [![Build Status](https://github.com/MulleFoundation/mulle-bunchobjects/workflows/CI/badge.svg?branch=release)](//github.com/MulleFoundation/mulle-bunchobjects/actions) | [RELEASENOTES](RELEASENOTES.md) |
 
 
 
@@ -73,6 +74,6 @@ cmake --install build --config Release
 
 ## Author
 
-[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK
+[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK  
 
 
