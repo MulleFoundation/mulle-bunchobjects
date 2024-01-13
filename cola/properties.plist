@@ -7,18 +7,10 @@
       user="MulleFoundation";
       repo="mulle-bunchobjects";
       homepage="https://github.com/MulleFoundation/mulle-bunchobjects";
-      license="BSD-3-Clause"
+      license="BSD-3-Clause";
    };
    dependencies =
    (
-      {
-         description="🛸 MulleFoundationBase does something";
-         domain="github";
-         name="MulleFoundationBase";
-         repo="MulleFoundationBase";
-         url="https://github.com/MulleFoundation/MulleFoundationBase";
-         user="MulleFoundation";
-      },
       {
          description="🔗 Glue for Objective-C code to support different Foundations";
          domain="github";
@@ -26,6 +18,22 @@
          repo="objc-compat";
          url="https://github.com/MulleFoundation/objc-compat";
          user="MulleFoundation";
+      },
+      {
+         description="🔠 Cross-platform thread/mutex/tss/atomic operations in C";
+         domain="github";
+         name="mulle-thread";
+         repo="mulle-thread";
+         url="https://github.com/mulle-concurrent/mulle-thread";
+         user="mulle-concurrent";
+      },
+      {
+         description="🔄 Flexible C memory allocation scheme";
+         domain="github";
+         name="mulle-allocator";
+         repo="mulle-allocator";
+         url="https://github.com/mulle-c/mulle-allocator";
+         user="mulle-c";
       }
-   )
+   );
 }
