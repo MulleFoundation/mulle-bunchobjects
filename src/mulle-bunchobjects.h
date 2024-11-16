@@ -51,7 +51,7 @@
 //
 #ifdef USE_BUNCH_OBJECTS
 
-#define MULLE_BUNCHOBJECTS_VERSION   ((0 << 20) | (20 << 8) | 4)
+#define MULLE_BUNCHOBJECTS_VERSION   ((0UL << 20) | (20 << 8) | 5)
 
 #include <mulle-thread/mulle-thread.h>
 #include <stdint.h>

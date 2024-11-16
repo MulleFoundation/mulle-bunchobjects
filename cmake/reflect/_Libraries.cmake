@@ -18,25 +18,29 @@ endif()
 # Disable for a sdk: `mulle-sourcetree mark AppleFoundation no-cmake-sdk-<name>`
 #
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-   if( NOT APPLE_FOUNDATION_FRAMEWORK)
-      find_library( APPLE_FOUNDATION_FRAMEWORK NAMES
-         Foundation
-      )
-      message( STATUS "APPLE_FOUNDATION_FRAMEWORK is ${APPLE_FOUNDATION_FRAMEWORK}")
-      #
-      # The order looks ascending, but due to the way this file is read
-      # it ends up being descending, which is what we need.
-      #
-      if( APPLE_FOUNDATION_FRAMEWORK)
+   if( COLLECT_OS_SPECIFIC_FRAMEWORKS_AS_NAMES)
+      list( APPEND OS_SPECIFIC_FRAMEWORKS "Foundation")
+   else()
+      if( NOT APPLE_FOUNDATION_FRAMEWORK)
+         find_library( APPLE_FOUNDATION_FRAMEWORK NAMES
+            Foundation
+         )
+         message( STATUS "APPLE_FOUNDATION_FRAMEWORK is ${APPLE_FOUNDATION_FRAMEWORK}")
          #
-         # Add APPLE_FOUNDATION_FRAMEWORK to OS_SPECIFIC_FRAMEWORKS list.
-         # Disable with: `mulle-sourcetree mark AppleFoundation no-cmake-add`
+         # The order looks ascending, but due to the way this file is read
+         # it ends up being descending, which is what we need.
          #
-         list( APPEND OS_SPECIFIC_FRAMEWORKS ${APPLE_FOUNDATION_FRAMEWORK})
-         # intentionally left blank
-      else()
-         # Disable with: `mulle-sourcetree mark AppleFoundation no-require-link`
-         message( FATAL_ERROR "APPLE_FOUNDATION_FRAMEWORK was not found")
+         if( APPLE_FOUNDATION_FRAMEWORK)
+            #
+            # Add APPLE_FOUNDATION_FRAMEWORK to OS_SPECIFIC_FRAMEWORKS list.
+            # Disable with: `mulle-sourcetree mark AppleFoundation no-cmake-add`
+            #
+            list( APPEND OS_SPECIFIC_FRAMEWORKS ${APPLE_FOUNDATION_FRAMEWORK})
+            # intentionally left blank
+         else()
+            # Disable with: `mulle-sourcetree mark AppleFoundation no-require-link`
+            message( SEND_ERROR "APPLE_FOUNDATION_FRAMEWORK was not found")
+         endif()
       endif()
    endif()
-   endif()
+endif()
