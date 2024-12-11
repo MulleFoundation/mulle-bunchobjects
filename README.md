@@ -13,7 +13,7 @@ objects of the bunch have been released.
 
 | Release Version                                       | Release Notes
 |-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/mulle-bunchobjects.svg?branch=release) [![Build Status](https://github.com/MulleFoundation/mulle-bunchobjects/workflows/CI/badge.svg?branch=release)](//github.com/MulleFoundation/mulle-bunchobjects/actions) | [RELEASENOTES](RELEASENOTES.md) |
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/mulle-bunchobjects.svg) [![Build Status](https://github.com/MulleFoundation/mulle-bunchobjects/workflows/CI/badge.svg)](//github.com/MulleFoundation/mulle-bunchobjects/actions) | [RELEASENOTES](RELEASENOTES.md) |
 
 
 
