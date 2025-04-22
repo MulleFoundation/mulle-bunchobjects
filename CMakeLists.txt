@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.1)
 
-project( mulle-bunchobjects VERSION 0.20.5 LANGUAGES C)
+project( mulle-bunchobjects VERSION 0.20.6 LANGUAGES C)
 
 #
 # Turn a "Library" into an "Executable"
