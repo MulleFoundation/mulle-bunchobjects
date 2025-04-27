@@ -149,9 +149,9 @@ export MULLE__BUNCHOBJECTS_NODETYPE="git"
 
 
 #
-# mulle-bunchobjects url: ${MULLE__BUNCHOBJECTS_URL:-https://github.com/MulleObjC/mulle-bunchobjects/archive/${MULLE_TAG}.tar.gz}
+# mulle-bunchobjects url: ${MULLE__BUNCHOBJECTS_URL:-https://github.com/MulleFoundation/mulle-bunchobjects/archive/${MULLE_TAG}.tar.gz}
 #
-export MULLE__BUNCHOBJECTS_URL="https://github.com/MulleObjC/mulle-bunchobjects.git"
+export MULLE__BUNCHOBJECTS_URL="https://github.com/MulleFoundation/mulle-bunchobjects.git"
 
 
 #
