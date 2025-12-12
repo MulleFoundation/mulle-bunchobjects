@@ -18,7 +18,15 @@ endif()
 # Disable for a sdk: `mulle-sourcetree mark objc-compat no-cmake-sdk-<name>`
 #
 if( NOT OBJC__COMPAT_HEADER)
-   find_file( OBJC__COMPAT_HEADER NAMES objc-compat.h objc-compat/objc-compat.h)
+   find_file( OBJC__COMPAT_HEADER NAMES
+      objc-compat.h objc-compat/objc-compat.h
+      NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_FIND_ROOT_PATH
+   )
+   if( NOT OBJC__COMPAT_HEADER AND NOT DEPENDENCY_IGNORE_SYSTEM_HEADERS)
+      find_file( OBJC__COMPAT_HEADER NAMES
+         objc-compat.h objc-compat/objc-compat.h
+      )
+   endif()
    message( STATUS "OBJC__COMPAT_HEADER is ${OBJC__COMPAT_HEADER}")
 
    #
@@ -70,7 +78,7 @@ if( NOT OBJC__COMPAT_HEADER)
       endforeach()
    else()
       # Disable with: `mulle-sourcetree mark objc-compat no-require`
-      message( SEND_ERROR "OBJC__COMPAT_HEADER was not found")
+      message( SEND_ERROR "OBJC__COMPAT_HEADER was not found in objc-compat.h objc-compat/objc-compat.h")
    endif()
 endif()
 
@@ -90,7 +98,7 @@ else()
          ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-core${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
          ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-core${CMAKE_STATIC_LIBRARY_SUFFIX}
          mulle-core
-         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH
+         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_FIND_ROOT_PATH
       )
       if( NOT MULLE__CORE_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
          find_library( MULLE__CORE_LIBRARY NAMES
@@ -143,7 +151,9 @@ else()
          endforeach()
       else()
          # Disable with: `mulle-sourcetree mark mulle-core no-require-link`
-         message( SEND_ERROR "MULLE__CORE_LIBRARY was not found")
+         message( SEND_ERROR "MULLE__CORE_LIBRARY was not found in ${CMAKE_STATIC_LIBRARY_PREFIX}mulle-core${CMAKE_DEBUG_POSTFIX}${CMAKE_STATIC_LIBRARY_SUFFIX}
+${CMAKE_STATIC_LIBRARY_PREFIX}mulle-core${CMAKE_STATIC_LIBRARY_SUFFIX}
+mulle-core")
       endif()
    endif()
 endif()
