@@ -20,14 +20,6 @@
          repo="objc-compat";
          url="https://github.com/MulleFoundation/objc-compat";
          user="MulleFoundation";
-      },
-      {
-         description="🌋 Almagamated library of mulle-core + mulle-concurrent + mulle-c";
-         domain="github";
-         name="mulle-core";
-         repo="mulle-core";
-         url="https://github.com/mulle-core/mulle-core";
-         user="mulle-core";
       }
    );
 }
