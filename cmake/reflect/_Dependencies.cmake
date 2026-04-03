@@ -12,6 +12,21 @@ if( MULLE_TRACE_INCLUDE)
 endif()
 
 #
+# Set library preference based on BUILD_SHARED_LIBS
+#
+if( BUILD_SHARED_LIBS)
+   set( MULLE_PREFERRED_LIBRARY_PREFIX "${CMAKE_SHARED_LIBRARY_PREFIX}")
+   set( MULLE_PREFERRED_LIBRARY_SUFFIX "${CMAKE_SHARED_LIBRARY_SUFFIX}")
+   set( MULLE_FALLBACK_LIBRARY_PREFIX "${CMAKE_STATIC_LIBRARY_PREFIX}")
+   set( MULLE_FALLBACK_LIBRARY_SUFFIX "${CMAKE_STATIC_LIBRARY_SUFFIX}")
+else()
+   set( MULLE_PREFERRED_LIBRARY_PREFIX "${CMAKE_STATIC_LIBRARY_PREFIX}")
+   set( MULLE_PREFERRED_LIBRARY_SUFFIX "${CMAKE_STATIC_LIBRARY_SUFFIX}")
+   set( MULLE_FALLBACK_LIBRARY_PREFIX "${CMAKE_SHARED_LIBRARY_PREFIX}")
+   set( MULLE_FALLBACK_LIBRARY_SUFFIX "${CMAKE_SHARED_LIBRARY_SUFFIX}")
+endif()
+
+#
 # Generated from sourcetree: 8513CFB7-F1C6-4005-9D97-ECE6F8CA3AFD;objc-compat;no-all-load,no-import,no-link;
 # Disable with : `mulle-sourcetree mark objc-compat no-header`
 # Disable for this platform: `mulle-sourcetree mark objc-compat no-cmake-platform-${MULLE_UNAME}`
@@ -55,22 +70,25 @@ if( NOT OBJC__COMPAT_HEADER)
          # use explicit path to avoid "surprises"
          if( IS_DIRECTORY "${_TMP_OBJC__COMPAT_DIR}")
             list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_OBJC__COMPAT_DIR}")
-            # we only want top level INHERIT_OBJC_LOADERS, so disable them
-            if( NOT NO_INHERIT_OBJC_LOADERS)
-               set( NO_INHERIT_OBJC_LOADERS OFF)
+            # we only want top level INHERIT_OBJC_DEPS, so disable them
+            if( NOT NO_INHERIT_OBJC_DEPS)
+               set( NO_INHERIT_OBJC_DEPS OFF)
             endif()
-            list( APPEND _TMP_INHERIT_OBJC_LOADERS ${NO_INHERIT_OBJC_LOADERS})
-            set( NO_INHERIT_OBJC_LOADERS ON)
+            list( APPEND _TMP_INHERIT_OBJC_DEPS ${NO_INHERIT_OBJC_DEPS})
+            set( NO_INHERIT_OBJC_DEPS ON)
             #
             include( "${_TMP_OBJC__COMPAT_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
             #
-            list( GET _TMP_INHERIT_OBJC_LOADERS -1 NO_INHERIT_OBJC_LOADERS)
-            list( REMOVE_AT _TMP_INHERIT_OBJC_LOADERS -1)
+            list( GET _TMP_INHERIT_OBJC_DEPS -1 NO_INHERIT_OBJC_DEPS)
+            list( REMOVE_AT _TMP_INHERIT_OBJC_DEPS -1)
             list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_OBJC__COMPAT_DIR}")
             #
             unset( OBJC__COMPAT_DEFINITIONS)
+            unset( OBJC__COMPAT_RENDEZVOUS_GLOBALS)
             include( "${_TMP_OBJC__COMPAT_DIR}/Definitions.cmake" OPTIONAL)
             list( APPEND INHERITED_DEFINITIONS ${OBJC__COMPAT_DEFINITIONS})
+            include( "${_TMP_OBJC__COMPAT_DIR}/Definitions.cmake" OPTIONAL)
+            list( APPEND RENDEZVOUS_GLOBALS ${OBJC__COMPAT_RENDEZVOUS_GLOBALS})
             break()
          else()
             message( STATUS "${_TMP_OBJC__COMPAT_DIR} not found")
@@ -79,5 +97,103 @@ if( NOT OBJC__COMPAT_HEADER)
    else()
       # Disable with: `mulle-sourcetree mark objc-compat no-require`
       message( SEND_ERROR "OBJC__COMPAT_HEADER was not found in objc-compat.h objc-compat/objc-compat.h")
+   endif()
+endif()
+
+
+
+#
+# Generated from sourcetree: 59184570-7F8B-49B8-8CA2-B3D1C6A8A1D0;MulleObjC;no-bequeath,no-singlephase;
+# Disable with : `mulle-sourcetree mark MulleObjC no-link`
+# Disable for this platform: `mulle-sourcetree mark MulleObjC no-cmake-platform-${MULLE_UNAME}`
+# Disable for a sdk: `mulle-sourcetree mark MulleObjC no-cmake-sdk-<name>`
+#
+if( COLLECT_ALL_LOAD_DEPENDENCY_LIBRARIES_AS_NAMES)
+   list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES "MulleObjC")
+else()
+   if( NOT MULLE_OBJC_LIBRARY)
+      find_library( MULLE_OBJC_LIBRARY NAMES
+         ${MULLE_PREFERRED_LIBRARY_PREFIX}MulleObjC${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
+         ${MULLE_PREFERRED_LIBRARY_PREFIX}MulleObjC${MULLE_PREFERRED_LIBRARY_SUFFIX}
+         ${MULLE_FALLBACK_LIBRARY_PREFIX}MulleObjC${CMAKE_DEBUG_POSTFIX}${MULLE_FALLBACK_LIBRARY_SUFFIX}
+         ${MULLE_FALLBACK_LIBRARY_PREFIX}MulleObjC${MULLE_FALLBACK_LIBRARY_SUFFIX}
+         MulleObjC
+         NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_FIND_ROOT_PATH
+      )
+      if( NOT MULLE_OBJC_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+         find_library( MULLE_OBJC_LIBRARY NAMES
+            ${MULLE_PREFERRED_LIBRARY_PREFIX}MulleObjC${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
+            ${MULLE_PREFERRED_LIBRARY_PREFIX}MulleObjC${MULLE_PREFERRED_LIBRARY_SUFFIX}
+            ${MULLE_FALLBACK_LIBRARY_PREFIX}MulleObjC${CMAKE_DEBUG_POSTFIX}${MULLE_FALLBACK_LIBRARY_SUFFIX}
+            ${MULLE_FALLBACK_LIBRARY_PREFIX}MulleObjC${MULLE_FALLBACK_LIBRARY_SUFFIX}
+            MulleObjC
+         )
+      endif()
+      message( STATUS "MULLE_OBJC_LIBRARY is ${MULLE_OBJC_LIBRARY}")
+      #
+      # The order looks ascending, but due to the way this file is read
+      # it ends up being descending, which is what we need.
+      #
+      if( MULLE_OBJC_LIBRARY)
+         #
+         # Add MULLE_OBJC_LIBRARY to ALL_LOAD_DEPENDENCY_LIBRARIES list.
+         # Disable with: `mulle-sourcetree mark MulleObjC no-cmake-add`
+         #
+         list( APPEND ALL_LOAD_DEPENDENCY_LIBRARIES ${MULLE_OBJC_LIBRARY})
+         #
+         # Inherit information from dependency.
+         # Encompasses: no-cmake-searchpath,no-cmake-dependency,no-cmake-loader
+         # Disable with: `mulle-sourcetree mark MulleObjC no-cmake-inherit`
+         #
+         # temporarily expand CMAKE_MODULE_PATH
+         get_filename_component( _TMP_MULLE_OBJC_ROOT "${MULLE_OBJC_LIBRARY}" DIRECTORY)
+         get_filename_component( _TMP_MULLE_OBJC_ROOT "${_TMP_MULLE_OBJC_ROOT}" DIRECTORY)
+         #
+         #
+         # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
+         # Disable with: `mulle-sourcetree mark MulleObjC no-cmake-dependency`
+         #
+         foreach( _TMP_MULLE_OBJC_NAME "MulleObjC")
+            set( _TMP_MULLE_OBJC_DIR "${_TMP_MULLE_OBJC_ROOT}/include/${_TMP_MULLE_OBJC_NAME}/cmake")
+            # use explicit path to avoid "surprises"
+            if( IS_DIRECTORY "${_TMP_MULLE_OBJC_DIR}")
+               list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_OBJC_DIR}")
+               #
+               include( "${_TMP_MULLE_OBJC_DIR}/DependenciesAndLibraries.cmake" OPTIONAL)
+               #
+               list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_OBJC_DIR}")
+               #
+               unset( MULLE_OBJC_DEFINITIONS)
+               unset( MULLE_OBJC_RENDEZVOUS_GLOBALS)
+               include( "${_TMP_MULLE_OBJC_DIR}/Definitions.cmake" OPTIONAL)
+               list( APPEND INHERITED_DEFINITIONS ${MULLE_OBJC_DEFINITIONS})
+               include( "${_TMP_MULLE_OBJC_DIR}/Definitions.cmake" OPTIONAL)
+               list( APPEND RENDEZVOUS_GLOBALS ${MULLE_OBJC_RENDEZVOUS_GLOBALS})
+               break()
+            else()
+               message( STATUS "${_TMP_MULLE_OBJC_DIR} not found")
+            endif()
+         endforeach()
+         #
+         # Search for "MulleObjCDeps+<name>.h" in include directory.
+         # Disable with: `mulle-sourcetree mark MulleObjC no-cmake-loader`
+         #
+         if( NOT NO_INHERIT_OBJC_DEPS)
+            foreach( _TMP_MULLE_OBJC_NAME "MulleObjC")
+               set( _TMP_MULLE_OBJC_FILE "${_TMP_MULLE_OBJC_ROOT}/include/${_TMP_MULLE_OBJC_NAME}/MulleObjCDeps+${_TMP_MULLE_OBJC_NAME}.h")
+               if( EXISTS "${_TMP_MULLE_OBJC_FILE}")
+                  list( APPEND INHERITED_OBJC_DEPS ${_TMP_MULLE_OBJC_FILE})
+                  break()
+               endif()
+            endforeach()
+         endif()
+      else()
+         # Disable with: `mulle-sourcetree mark MulleObjC no-require-link`
+         message( SEND_ERROR "MULLE_OBJC_LIBRARY was not found in ${MULLE_PREFERRED_LIBRARY_PREFIX}MulleObjC${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
+${MULLE_PREFERRED_LIBRARY_PREFIX}MulleObjC${MULLE_PREFERRED_LIBRARY_SUFFIX}
+${MULLE_FALLBACK_LIBRARY_PREFIX}MulleObjC${CMAKE_DEBUG_POSTFIX}${MULLE_FALLBACK_LIBRARY_SUFFIX}
+${MULLE_FALLBACK_LIBRARY_PREFIX}MulleObjC${MULLE_FALLBACK_LIBRARY_SUFFIX}
+MulleObjC")
+      endif()
    endif()
 endif()
