@@ -14,6 +14,22 @@
    dependencies =
    (
       {
+         description="👨‍👩‍👧‍👦 mulle-bunchobjects efficently allocate instances";
+         domain="";
+         name="# no-bequeath is inherited voodoo";
+         repo="# no-bequeath is inherited voodoo";
+         url="";
+         user="";
+      },
+      {
+         description="💎 A collection of Objective-C root classes for mulle-objc";
+         domain="github";
+         name="MulleObjC";
+         repo="MulleObjC";
+         url="https://github.com/mulle-objc/MulleObjC";
+         user="mulle-objc";
+      },
+      {
          description="🔗 Glue for Objective-C code to support different Foundations";
          domain="github";
          name="objc-compat";

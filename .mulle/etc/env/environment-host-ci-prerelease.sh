@@ -1,22 +1,4 @@
 #
-# objc-compat nodetype: ${OBJC__COMPAT_NODETYPE:-tar}
-#
-export OBJC__COMPAT_NODETYPE="git"
-
-
-#
-# objc-compat url: ${OBJC__COMPAT_URL:-https://github.com/MulleFoundation/objc-compat/archive/${MULLE_TAG}.tar.gz}
-#
-export OBJC__COMPAT_URL="https://github.com/MulleFoundation/objc-compat.git"
-
-
-#
-# objc-compat branch: ${OBJC__COMPAT_BRANCH}
-#
-export OBJC__COMPAT_BRANCH="prerelease"
-
-
-#
 # MulleObjC nodetype: ${MULLE_OBJC_NODETYPE:-tar}
 #
 export MULLE_OBJC_NODETYPE="git"
@@ -161,6 +143,24 @@ export MULLE__THREAD_BRANCH="prerelease"
 
 
 #
+# mulle-dlfcn nodetype: ${MULLE__DLFCN_NODETYPE:-tar}
+#
+export MULLE__DLFCN_NODETYPE="git"
+
+
+#
+# mulle-dlfcn url: ${MULLE__DLFCN_URL:-https://github.com/mulle-core/mulle-dlfcn/archive/${MULLE_TAG}.tar.gz}
+#
+export MULLE__DLFCN_URL="https://github.com/mulle-core/mulle-dlfcn.git"
+
+
+#
+# mulle-dlfcn branch: ${MULLE__DLFCN_BRANCH}
+#
+export MULLE__DLFCN_BRANCH="prerelease"
+
+
+#
 # mulle-objc-debug nodetype: ${MULLE__OBJC__DEBUG_NODETYPE:-tar}
 #
 export MULLE__OBJC__DEBUG_NODETYPE="git"
@@ -212,6 +212,24 @@ export MULLE__OBJC__LIST_URL="https://github.com/mulle-objc/mulle-objc-list.git"
 # mulle-objc-list branch: ${MULLE__OBJC__LIST_BRANCH}
 #
 export MULLE__OBJC__LIST_BRANCH="prerelease"
+
+
+#
+# objc-compat nodetype: ${OBJC__COMPAT_NODETYPE:-tar}
+#
+export OBJC__COMPAT_NODETYPE="git"
+
+
+#
+# objc-compat url: ${OBJC__COMPAT_URL:-https://github.com/MulleFoundation/objc-compat/archive/${MULLE_TAG}.tar.gz}
+#
+export OBJC__COMPAT_URL="https://github.com/MulleFoundation/objc-compat.git"
+
+
+#
+# objc-compat branch: ${OBJC__COMPAT_BRANCH}
+#
+export OBJC__COMPAT_BRANCH="prerelease"
 
 
 #
