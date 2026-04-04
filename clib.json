@@ -1,15 +1,17 @@
 {
    "name" : "mulle-bunchobjects",
-   "version" : "0.20.7",
+   "version" : "0.20.8",
    "description" : "👨‍👩‍👧‍👦 mulle-bunchobjects efficently allocate instances",
    "keywords" : [],
    "license" : "BSD-3-Clause",
    "repo" : "MulleFoundation/mulle-bunchobjects",
    "src" : [
+      "asset/dox/TOC.md",
       "src/mulle-bunchobjects.h",
       "src/mulle-bunchobjects.m"
    ],
    "dependencies" : {
+      "mulle-objc/MulleObjC": "*",
       "MulleFoundation/objc-compat": "*"
    }
 }

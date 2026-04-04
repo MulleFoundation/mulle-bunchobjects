@@ -103,7 +103,7 @@ endif()
 
 
 #
-# Generated from sourcetree: 59184570-7F8B-49B8-8CA2-B3D1C6A8A1D0;MulleObjC;no-bequeath,no-singlephase;
+# Generated from sourcetree: 59184570-7F8B-49B8-8CA2-B3D1C6A8A1D0;MulleObjC;no-singlephase;
 # Disable with : `mulle-sourcetree mark MulleObjC no-link`
 # Disable for this platform: `mulle-sourcetree mark MulleObjC no-cmake-platform-${MULLE_UNAME}`
 # Disable for a sdk: `mulle-sourcetree mark MulleObjC no-cmake-sdk-<name>`
