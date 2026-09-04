@@ -22,25 +22,31 @@ if( ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
       list( APPEND OS_SPECIFIC_FRAMEWORKS "Foundation")
    else()
       if( NOT APPLE_FOUNDATION_FRAMEWORK)
-         find_library( APPLE_FOUNDATION_FRAMEWORK NAMES
-            Foundation
-         )
+         foreach( _TMP_APPLE_FOUNDATION_FRAMEWORK_TARGET Foundation)
+            if( TARGET ${_TMP_APPLE_FOUNDATION_FRAMEWORK_TARGET})
+               set( APPLE_FOUNDATION_FRAMEWORK ${_TMP_APPLE_FOUNDATION_FRAMEWORK_TARGET})
+               break()
+            endif()
+         endforeach()
+         if( NOT APPLE_FOUNDATION_FRAMEWORK)
+            find_library( APPLE_FOUNDATION_FRAMEWORK NAMES
+               Foundation
+            )
+         endif()
          message( STATUS "APPLE_FOUNDATION_FRAMEWORK is ${APPLE_FOUNDATION_FRAMEWORK}")
-         #
-         # The order looks ascending, but due to the way this file is read
-         # it ends up being descending, which is what we need.
-         #
-         if( APPLE_FOUNDATION_FRAMEWORK)
+      endif()
+      if( APPLE_FOUNDATION_FRAMEWORK)
             #
             # Add APPLE_FOUNDATION_FRAMEWORK to OS_SPECIFIC_FRAMEWORKS list.
             # Disable with: `mulle-sourcetree mark AppleFoundation no-cmake-add`
             #
-            list( APPEND OS_SPECIFIC_FRAMEWORKS ${APPLE_FOUNDATION_FRAMEWORK})
+            if( NOT ${APPLE_FOUNDATION_FRAMEWORK} IN_LIST OS_SPECIFIC_FRAMEWORKS)
+               list( APPEND OS_SPECIFIC_FRAMEWORKS ${APPLE_FOUNDATION_FRAMEWORK})
+            endif()
             # intentionally left blank
-         else()
-            # Disable with: `mulle-sourcetree mark AppleFoundation no-require-link`
-            message( SEND_ERROR "APPLE_FOUNDATION_FRAMEWORK was not found in Foundation")
-         endif()
+      else()
+         # Disable with: `mulle-sourcetree mark AppleFoundation no-require-link`
+         message( SEND_ERROR "APPLE_FOUNDATION_FRAMEWORK was not found in Foundation")
       endif()
    endif()
 endif()
