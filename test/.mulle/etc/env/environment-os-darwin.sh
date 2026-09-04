@@ -1,7 +1,7 @@
 #
 #
 #
-export MULLE_TEST_OBJC_DIALECT="Apple"
+export MULLE_TEST_OBJC_DIALECT="mulle-objc"
 
 
 #

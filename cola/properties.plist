@@ -10,6 +10,7 @@
       repo="mulle-bunchobjects";
       homepage="https://github.com/MulleFoundation/mulle-bunchobjects";
       license="BSD-3-Clause";
+      version="0.20.10";
    };
    dependencies =
    (

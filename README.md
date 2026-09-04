@@ -18,6 +18,11 @@ objects of the bunch have been released.
 
 
 
+## Documentation & Guides
+
+* [API Summary](asset/dox/api/toc)
+
+
 
 
 ## Requirements
