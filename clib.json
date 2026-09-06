@@ -1,12 +1,12 @@
 {
    "name" : "mulle-bunchobjects",
-   "version" : "0.20.9",
+   "version" : "0.20.10",
    "description" : "👨‍👩‍👧‍👦 mulle-bunchobjects efficently allocate instances",
    "keywords" : [],
    "license" : "BSD-3-Clause",
    "repo" : "MulleFoundation/mulle-bunchobjects",
    "src" : [
-      "asset/dox/TOC.md",
+      "asset/dox/api/toc/index.md",
       "src/mulle-bunchobjects.h",
       "src/mulle-bunchobjects.m"
    ],
