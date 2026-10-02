@@ -81,3 +81,8 @@ test*/**/*.test.*
 .kiro/
 TODO.md
 REVIEW.md
+*.orig
+.touch
+*.workspace
+*.*-workspace
+research/
