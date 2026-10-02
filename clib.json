@@ -1,6 +1,6 @@
 {
    "name" : "mulle-bunchobjects",
-   "version" : "0.20.10",
+   "version" : "0.20.11",
    "description" : "👨‍👩‍👧‍👦 mulle-bunchobjects efficently allocate instances",
    "keywords" : [],
    "license" : "BSD-3-Clause",

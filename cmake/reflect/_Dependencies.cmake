@@ -5,7 +5,7 @@
 #
 # Disable generation of this file with:
 #
-# mulle-sde environment set MULLE_SOURCETREE_TO_CMAKE_DEPENDENCIES_FILE DISABLE
+# mulle-sde environment --global set MULLE_SOURCETREE_TO_CMAKE_DEPENDENCIES_FILE DISABLE
 #
 if( MULLE_TRACE_INCLUDE)
    message( STATUS "# Include \"${CMAKE_CURRENT_LIST_FILE}\"" )
@@ -38,7 +38,11 @@ foreach( _TMP_OBJC__COMPAT_HEADER_TARGET_TARGET objc-compat)
       break()
    endif()
 endforeach()
-if( NOT OBJC__COMPAT_HEADER AND NOT OBJC__COMPAT_HEADER_TARGET)
+if( OBJC__COMPAT_HEADER_TARGET)
+   set( OBJC__COMPAT_HEADER ${OBJC__COMPAT_HEADER_TARGET})
+endif()
+
+if( NOT OBJC__COMPAT_HEADER)
    find_file( OBJC__COMPAT_HEADER NAMES
       objc-compat.h objc-compat/objc-compat.h
       NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_FIND_ROOT_PATH
@@ -49,24 +53,25 @@ if( NOT OBJC__COMPAT_HEADER AND NOT OBJC__COMPAT_HEADER_TARGET)
       )
    endif()
    message( STATUS "OBJC__COMPAT_HEADER is ${OBJC__COMPAT_HEADER}")
+endif()
 
+#
+# Add OBJC__COMPAT_HEADER to HEADER_ONLY_LIBRARIES list.
+# Disable with: `mulle-sourcetree mark objc-compat no-cmake-add`
+#
+set( HEADER_ONLY_LIBRARIES
+   ${OBJC__COMPAT_HEADER}
+   ${HEADER_ONLY_LIBRARIES}
+)
+if( OBJC__COMPAT_HEADER)
    #
-   # Add OBJC__COMPAT_HEADER to HEADER_ONLY_LIBRARIES list.
-   # Disable with: `mulle-sourcetree mark objc-compat no-cmake-add`
+   # Inherit ObjC loader and link dependency info.
+   # Disable with: `mulle-sourcetree mark objc-compat no-cmake-inherit`
    #
-   set( HEADER_ONLY_LIBRARIES
-      ${OBJC__COMPAT_HEADER}
-      ${HEADER_ONLY_LIBRARIES}
-   )
-   if( OBJC__COMPAT_HEADER)
-      #
-      # Inherit ObjC loader and link dependency info.
-      # Disable with: `mulle-sourcetree mark objc-compat no-cmake-inherit`
-      #
-      get_filename_component( _TMP_OBJC__COMPAT_ROOT "${OBJC__COMPAT_HEADER}" DIRECTORY)
-      get_filename_component( _TMP_OBJC__COMPAT_NAME "${_TMP_OBJC__COMPAT_ROOT}" NAME)
-      get_filename_component( _TMP_OBJC__COMPAT_ROOT "${_TMP_OBJC__COMPAT_ROOT}" DIRECTORY)
-      get_filename_component( _TMP_OBJC__COMPAT_ROOT "${_TMP_OBJC__COMPAT_ROOT}" DIRECTORY)
+   get_filename_component( _TMP_OBJC__COMPAT_ROOT "${OBJC__COMPAT_HEADER}" DIRECTORY)
+   get_filename_component( _TMP_OBJC__COMPAT_NAME "${_TMP_OBJC__COMPAT_ROOT}" NAME)
+   get_filename_component( _TMP_OBJC__COMPAT_ROOT "${_TMP_OBJC__COMPAT_ROOT}" DIRECTORY)
+   get_filename_component( _TMP_OBJC__COMPAT_ROOT "${_TMP_OBJC__COMPAT_ROOT}" DIRECTORY)
       #
       # Search for "Definitions.cmake" and "DependenciesAndLibraries.cmake" to include.
       # Disable with: `mulle-sourcetree mark objc-compat no-cmake-dependency`
@@ -100,10 +105,9 @@ if( NOT OBJC__COMPAT_HEADER AND NOT OBJC__COMPAT_HEADER_TARGET)
             message( STATUS "${_TMP_OBJC__COMPAT_DIR} not found")
          endif()
       endforeach()
-   else()
-      # Disable with: `mulle-sourcetree mark objc-compat no-require`
-      message( SEND_ERROR "OBJC__COMPAT_HEADER was not found in objc-compat.h objc-compat/objc-compat.h")
-   endif()
+else()
+   # Disable with: `mulle-sourcetree mark objc-compat no-require`
+   message( SEND_ERROR "OBJC__COMPAT_HEADER was not found in objc-compat.h objc-compat/objc-compat.h")
 endif()
 
 
@@ -133,7 +137,7 @@ else()
             MulleObjC
             NO_CMAKE_SYSTEM_PATH NO_SYSTEM_ENVIRONMENT_PATH NO_CMAKE_FIND_ROOT_PATH
          )
-         if( NOT MULLE_OBJC_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBARIES)
+         if( NOT MULLE_OBJC_LIBRARY AND NOT DEPENDENCY_IGNORE_SYSTEM_LIBRARIES)
             find_library( MULLE_OBJC_LIBRARY NAMES
                ${MULLE_PREFERRED_LIBRARY_PREFIX}MulleObjC${CMAKE_DEBUG_POSTFIX}${MULLE_PREFERRED_LIBRARY_SUFFIX}
                ${MULLE_PREFERRED_LIBRARY_PREFIX}MulleObjC${MULLE_PREFERRED_LIBRARY_SUFFIX}
