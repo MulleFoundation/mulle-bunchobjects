@@ -29,7 +29,6 @@ objects of the bunch have been released.
 
 |   Requirement         | Release Version  | Description
 |-----------------------|------------------|---------------
-| [# no-bequeath is inherited voodoo]() | - | 👨‍👩‍👧‍👦 mulle-bunchobjects efficently allocate instances
 | [MulleObjC](https://github.com/mulle-objc/MulleObjC) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-objc/MulleObjC.svg) [![Build Status](https://github.com/mulle-objc/MulleObjC/workflows/CI/badge.svg?branch=release)](https://github.com/mulle-objc/MulleObjC/actions/workflows/mulle-sde-ci.yml) | 💎 A collection of Objective-C root classes for mulle-objc
 | [objc-compat](https://github.com/MulleFoundation/objc-compat) | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/MulleFoundation/objc-compat.svg) [![Build Status](https://github.com/MulleFoundation/objc-compat/workflows/CI/badge.svg?branch=release)](https://github.com/MulleFoundation/objc-compat/actions/workflows/mulle-sde-ci.yml) | 🔗 Glue for Objective-C code to support different Foundations
 
@@ -54,13 +53,12 @@ mulle-sde install --prefix /usr/local \
    https://github.com/MulleFoundation/mulle-bunchobjects/archive/latest.tar.gz
 ```
 
-### Legacy Installation
+### Manual Installation
 
 Install the requirements:
 
 | Requirements                                 | Description
 |----------------------------------------------|-----------------------
-| [# no-bequeath is inherited voodoo]()             | 👨‍👩‍👧‍👦 mulle-bunchobjects efficently allocate instances
 | [MulleObjC](https://github.com/mulle-objc/MulleObjC)             | 💎 A collection of Objective-C root classes for mulle-objc
 | [objc-compat](https://github.com/MulleFoundation/objc-compat)             | 🔗 Glue for Objective-C code to support different Foundations
 
